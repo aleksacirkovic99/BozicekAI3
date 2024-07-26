@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const fetch = require('node-fetch');
 const OpenAI = require('openai');
 
@@ -11,6 +12,7 @@ const openai = new OpenAI({
 });
 
 app.use(bodyParser.json());
+app.use(cors()); // Enable CORS
 
 app.post('/api/chat', async (req, res) => {
     const userMessage = req.body.message;
